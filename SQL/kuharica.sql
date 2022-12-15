@@ -3,11 +3,12 @@
 # Otvoriti CMD
 # Zaljepiti sljedeću naredbu bez prvog hash znaka
 # c:\xampp\mysql\bin\mysql -uroot < C:\Users\Tonko\Documents\edunovapp26\SQL\vjezbe\sql_vjezbe\knjiznica.sql
-# c:\xampp\mysql\bin\mysql -uroot < C:\Users\Tonko\Documents\edunovapp26\SQL\vjezbe\sql_vjezbe\kuharica.sql
+# c:\xampp\mysql\bin\mysql -uroot < C:\Users\Tonko\Documents\edunovapp26\zavrsni_rad\SQL\kuharica.sql
 
 drop database if exists kuharica;
 ##Klijent pokrenuti s --default-character-set=utf8 
 create database kuharica DEFAULT CHARACTER SET utf8  DEFAULT COLLATE utf8_general_ci;
+
 use kuharica;
 
 create table recept(
@@ -97,7 +98,7 @@ insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
              preko tjestenine', '15min', null);
 #4.Pizza Margherita
 insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
-            values(4, 'Pizza Margherita', '1. Uzmite šaku brašna i rasporedite po stolu. Dodajte svježe tijesto za pizzu i razvucite ga. 2. Stavite malo maslinovog ulja na sredinu tijesta i dodajte passatu. Ravnomjerno rasporedite. 4. Dodajte parmezan i rasporedite po cijeloj površini, zatim natrgajte listiće bosiljka i mozzarellu. 5. Na kraju dodajte rajcicu i maslinovo ulje. 6. pecite na 220 stupnjeva u prethodno zagrijanoj pecnici na 10min', '20min', null);
+            values(4, 'Pizza Margherita', '1. Uzmite saku brasna i rasporedite po stolu. Dodajte svjeze tijesto za pizzu i razvucite ga. 2. Stavite malo maslinovog ulja na sredinu tijesta i dodajte passatu. Ravnomjerno rasporedite. 4. Dodajte parmezan i rasporedite po cijeloj površini, zatim natrgajte listiće bosiljka i mozzarellu. 5. Na kraju dodajte rajcicu i maslinovo ulje. 6. pecite na 220 stupnjeva u prethodno zagrijanoj pecnici na 10min', '20min', null);
 
 
 #normativ
@@ -134,11 +135,11 @@ insert into sastojak(sifra, naziv)
                   (14, 'Bademi'),
                   (15, 'Bosiljak'),
                   (16, 'Parmezan'),
-                  (17, 'Pesto')
-                  (18, 'Tijesto')
-                  (19, 'Bosiljak')
-                  (20, 'Rajcica')
-                  (21, 'Brasno')
+                  (17, 'Pesto'),
+                  (18, 'Tijesto'),
+                  (19, 'Bosiljak'),
+                  (20, 'Rajcica'),
+                  (21, 'Brasno'),
                   (22, 'Mozzarella')
                   ;
 
