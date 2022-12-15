@@ -101,6 +101,11 @@ insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
             values(4, 'Pizza Margherita', '1. Uzmite saku brasna i rasporedite po stolu. Dodajte svjeze tijesto za pizzu i razvucite ga. 2. Stavite malo maslinovog ulja na sredinu tijesta i dodajte passatu. Ravnomjerno rasporedite. 4. Dodajte parmezan i rasporedite po cijeloj površini, zatim natrgajte listiće bosiljka i mozzarellu. 5. Na kraju dodajte rajcicu i maslinovo ulje. 6. pecite na 220 stupnjeva u prethodno zagrijanoj pecnici na 10min', '20min', null);
 
 
+#5.All American Burger
+insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
+            values(5, 'All American Burger', '1. U tavu dodajte malo ulja i zagrijte. Zatim dodajte mljeveno govede meso i zacinite sa malo soli i papra. 2. Dodajte maslac radi boljeg okusa i luk narezan na ploske. Burger pecite po 2 min na svakoj strani. samo jednom okrenite. 3. Ugasite vatru na stednjaku i dodajte dva listica sira. Ponovo zacinite sa soli i paprom. 4. Na kvalitetno pecivo stavite malo senfa, racicu i krastavac narezan na ploskice. Zatim dodajte meso sir i luk', '15min', null);
+
+
 #normativ
 #obrnuti redosljed!!!!!
 insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
@@ -114,6 +119,9 @@ insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
 
 insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
             values(4, 4, null, null, '0.5');
+
+insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
+            values(5, 5, null, null, '0.5');
 
 
 # sastojak
@@ -140,7 +148,14 @@ insert into sastojak(sifra, naziv)
                   (19, 'Bosiljak'),
                   (20, 'Rajcica'),
                   (21, 'Brasno'),
-                  (22, 'Mozzarella')
+                  (22, 'Mozzarella'),
+                  (23, 'Ulje'),
+                  (24, 'Mljeveno meso'),
+                  (25, 'Luk'),
+                  (26, 'Gouda sir'),
+                  (27, 'Pecivo'),
+                  (28, 'Senf'),
+                  (29, 'Krastavac')
                   ;
 
 #chef
@@ -151,10 +166,9 @@ insert into chef(sifra, ime, prezime, razina)
             values(1, 'Gennaro', 'Contaldo', 'Head Chef');
 
 insert into chef(sifra, ime, prezime, razina)
-            values(2, 'Gennaro', 'Contaldo', 'Head Chef');
+            values(2, 'Gordon', 'Ramsay', 'Executive Chef');
 
-insert into chef(sifra, ime, prezime, razina)
-            values(3, 'Gennaro', 'Contaldo', 'Head Chef');
+
 
 
 
