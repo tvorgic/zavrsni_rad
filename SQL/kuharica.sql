@@ -11,6 +11,27 @@ create database kuharica DEFAULT CHARACTER SET utf8  DEFAULT COLLATE utf8_genera
 
 use kuharica;
 
+
+create table jedinica_mjere(
+    sifra int not null primary key,
+    naziv varchar(50)
+);
+
+
+create table sastojak(
+    sifra int not null primary key,
+    naziv varchar(50)
+    
+);
+
+
+create table chef(
+    sifra int not null primary key,
+    ime varchar(50),
+    prezime varchar(50),
+    razina varchar(50)
+);
+
 create table recept(
     sifra int not null primary key,
     naziv varchar(50) not null,
@@ -28,23 +49,10 @@ create table normativ(
     
 );
 
-create table sastojak(
-    sifra int not null primary key,
-    naziv varchar(50)
-    
-);
 
-create table chef(
-    sifra int not null primary key,
-    ime varchar(50),
-    prezime varchar(50),
-    razina varchar(50)
-);
 
-create table jedinica_mjere(
-    sifra int not null primary key,
-    naziv varchar(50)
-);
+
+
 
 #veze između tablica
 #alter table  add foreign key () references (sifra);
@@ -80,48 +88,15 @@ alter table normativ add foreign key (jedinica_mjere) references jedinica_mjere(
 #kako napraviti escape sign
 
 
-
-#1.Carbonara
-insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
-            values(1,'Carbonara', '1. Skuhati tjesteninu, 2. Narezati slaninu i staviti u posudu sa malo maslinovog ulja i maslaca,
-             3. U drugoj posudi pomijesati tri zumanjka i jedno cijelo jaje,
-             4. Dodati tjesteninu u posudu sa slaninom i preliti sa jajima, 5. Lagano promjesati', '20 min', null );
-#2.Cannelini
-insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
-            values(2, 'Cannelini all ucelleto', '1. Rukom zgnjecite cesnjak, narežite chili i ubacite u tavu, zatim dodajte maslinovo ulje i passatu
-            . kuhajte 5 min i po potrebii dodajte sol i papar. dodajte i 5 listica kadulje. 2. Dodajte grah u tavi i lagano mjesajte. 3. Na drugoj tavi
-         przite slaninu', '15min', null);
-#3.Pesto
-insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
-            values(3, 'Hey pesto!', '1. Stavite kuhati tjesteninu. 2. Dok se tjestenina kuha u blender ubacite cesnjak i saku pinjola ili badema. Kada 
-            sameljete dodajte rukohvat bosiljka, malo soli i papra te maslinovog ulja po zelji. nakon toga dodajte i parmezan sir 3. Pesto prelijte
-             preko tjestenine', '15min', null);
-#4.Pizza Margherita
-insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
-            values(4, 'Pizza Margherita', '1. Uzmite saku brasna i rasporedite po stolu. Dodajte svjeze tijesto za pizzu i razvucite ga. 2. Stavite malo maslinovog ulja na sredinu tijesta i dodajte passatu. Ravnomjerno rasporedite. 4. Dodajte parmezan i rasporedite po cijeloj površini, zatim natrgajte listiće bosiljka i mozzarellu. 5. Na kraju dodajte rajcicu i maslinovo ulje. 6. pecite na 220 stupnjeva u prethodno zagrijanoj pecnici na 10min', '20min', null);
+#jedinica_mjere
 
 
-#5.All American Burger
-insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
-            values(5, 'All American Burger', '1. U tavu dodajte malo ulja i zagrijte. Zatim dodajte mljeveno govede meso i zacinite sa malo soli i papra. 2. Dodajte maslac radi boljeg okusa i luk narezan na ploske. Burger pecite po 2 min na svakoj strani. samo jednom okrenite. 3. Ugasite vatru na stednjaku i dodajte dva listica sira. Ponovo zacinite sa soli i paprom. 4. Na kvalitetno pecivo stavite malo senfa, racicu i krastavac narezan na ploskice. Zatim dodajte meso sir i luk', '15min', null);
+insert into jedinica_mjere(sifra, naziv)
+            values(1, 'kg'),
+                  (2, 'l'),
+                  (3, 'kom');
 
 
-#normativ
-#obrnuti redosljed!!!!!
-insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
-            values(1, 1, null, null, '0.5');
-
-insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
-            values(2, 2, null, null, '0.5');
-
-insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
-            values(3, 3, null, null, '0.5');
-
-insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
-            values(4, 4, null, null, '0.5');
-
-insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
-            values(5, 5, null, null, '0.5');
 
 
 # sastojak
@@ -155,7 +130,10 @@ insert into sastojak(sifra, naziv)
                   (26, 'Gouda sir'),
                   (27, 'Pecivo'),
                   (28, 'Senf'),
-                  (29, 'Krastavac')
+                  (29, 'Krastavac'),
+                  (30, 'Rukola'),
+                  (31, 'Tunjevina'),
+                  (32, 'Limun')
                   ;
 
 #chef
@@ -173,13 +151,65 @@ insert into chef(sifra, ime, prezime, razina)
 
 
 
-#jedinica_mjere
+#recept
+
+#1.Carbonara
+insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
+            values(1,'Carbonara', '1. Skuhati tjesteninu, 2. Narezati slaninu i staviti u posudu sa malo maslinovog ulja i maslaca,
+             3. U drugoj posudi pomijesati tri zumanjka i jedno cijelo jaje,
+             4. Dodati tjesteninu u posudu sa slaninom i preliti sa jajima, 5. Lagano promjesati', '20 min', 1 );
+#2.Cannelini
+insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
+            values(2, 'Cannelini all ucelleto', '1. Rukom zgnjecite cesnjak, narežite chili i ubacite u tavu, zatim dodajte maslinovo ulje i passatu
+            . kuhajte 5 min i po potrebii dodajte sol i papar. dodajte i 5 listica kadulje. 2. Dodajte grah u tavi i lagano mjesajte. 3. Na drugoj tavi
+         przite slaninu', '15min', 1);
+#3.Pesto
+insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
+            values(3, 'Hey pesto!', '1. Stavite kuhati tjesteninu. 2. Dok se tjestenina kuha u blender ubacite cesnjak i saku pinjola ili badema. Kada 
+            sameljete dodajte rukohvat bosiljka, malo soli i papra te maslinovog ulja po zelji. nakon toga dodajte i parmezan sir 3. Pesto prelijte
+             preko tjestenine', '15min', 1);
+#4.Pizza Margherita
+insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
+            values(4, 'Pizza Margherita', '1. Uzmite saku brasna i rasporedite po stolu. Dodajte svjeze tijesto za pizzu i razvucite ga. 2. Stavite malo maslinovog ulja na sredinu tijesta i dodajte passatu. Ravnomjerno rasporedite. 4. Dodajte parmezan i rasporedite po cijeloj površini, zatim natrgajte listiće bosiljka i mozzarellu. 5. Na kraju dodajte rajcicu i maslinovo ulje. 6. pecite na 220 stupnjeva u prethodno zagrijanoj pecnici na 10min', '20min', 1);
 
 
-insert into jedinica_mjere(sifra, naziv)
-            values(1, 'kg'),
-                  (2, 'l'),
-                  (3, 'kom');
+#5.All American Burger
+insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
+            values(5, 'All American Burger', '1. U tavu dodajte malo ulja i zagrijte. Zatim dodajte mljeveno govede meso i zacinite sa malo soli i papra. 2. Dodajte maslac radi boljeg okusa i luk narezan na ploske. Burger pecite po 2 min na svakoj strani. samo jednom okrenite. 3. Ugasite vatru na stednjaku i dodajte dva listica sira. Ponovo zacinite sa soli i paprom. 4. Na kvalitetno pecivo stavite malo senfa, racicu i krastavac narezan na ploskice. Zatim dodajte meso sir i luk', '15min', 2);
+
+#6. Tuna Sphagetti
+insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
+            values(6, 'Tuna Sphagetti', '1. Skuhati sphagette. 2. U tavu dodati nasjeckani cenjak i cetvrtinu chillija. Zagrijati na maslinovom ulju i dodati malo tune. 3. Izvadite dio skuhane tjestenine na tavu i mjesajte da se stopi sa svim drugim sastojcima. 4. Ugasite vatru i dodajte jednu nasjeckanu rajcicu, malo rukole i parmezana. 5. Iscjedite malo limuna' , '20min', 1);
+
+
+#normativ
+#obrnuti redosljed!!!!!
+insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
+            values(1, 1, null, null, '0.5');
+
+insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
+            values(2, 2, null, null, '0.5');
+
+insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
+            values(3, 3, null, null, '0.5');
+
+insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
+            values(4, 4, null, null, '0.5');
+
+insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
+            values(5, 5, null, null, '0.5');
+
+insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
+            values(6, 6, null, null, '0.5');
+
+
+
+
+
+
+
+
+
 
 
 
