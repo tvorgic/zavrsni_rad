@@ -120,7 +120,7 @@ insert into sastojak(sifra, naziv)
                   (16, 'Parmezan'),
                   (17, 'Pesto'),
                   (18, 'Tijesto'),
-                  (19, 'Bosiljak'),
+                  (19, 'Svinjska mast'),
                   (20, 'Rajcica'),
                   (21, 'Brasno'),
                   (22, 'Mozzarella'),
@@ -133,7 +133,9 @@ insert into sastojak(sifra, naziv)
                   (29, 'Krastavac'),
                   (30, 'Rukola'),
                   (31, 'Tunjevina'),
-                  (32, 'Limun')
+                  (32, 'Limun'),
+                  (33, 'Krumpir'),
+                  (34, 'Ruzmarin')
                   ;
 
 #chef
@@ -145,6 +147,9 @@ insert into chef(sifra, ime, prezime, razina)
 
 insert into chef(sifra, ime, prezime, razina)
             values(2, 'Gordon', 'Ramsay', 'Executive Chef');
+    
+insert into chef(sifra, ime, prezime, razina)
+            values(3, 'Heston', 'Blumenthal', 'Head Chef');
 
 
 
@@ -181,6 +186,10 @@ insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
 insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
             values(6, 'Tuna Sphagetti', '1. Skuhati sphagette. 2. U tavu dodati nasjeckani cenjak i cetvrtinu chillija. Zagrijati na maslinovom ulju i dodati malo tune. 3. Izvadite dio skuhane tjestenine na tavu i mjesajte da se stopi sa svim drugim sastojcima. 4. Ugasite vatru i dodajte jednu nasjeckanu rajcicu, malo rukole i parmezana. 5. Iscjedite malo limuna' , '20min', 1);
 
+#7. Blumenthals Roast Potatoes
+insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
+            values(7, 'Blumenthals Roast Potatoes', '1. Ogulite krumpir i narezite ga na kriske, dobro isperite da se makne skrob. 2. Stavite kuhati u vodu bez soli dok se krumpir ne pocne raspadati. 3. Oprezno izvadite krimpir na resetku da se ne raspadne i pricekajte dok se ne rashladi i otvrdne. 4. U tacnu dodajte obilnu količinu maslinovog ulja i svinjske masti. Zagrijte tacnu da se otopoi mast i dodajte krumpire. Lagano promjesajte da se krumpiri ne raspadnu te zatim stavite u pecnicu. Ovisno o vrsti krumpira pecite na 50 min ili cak do 90 min. Kada mislite da su krumpiri dobili zadovoljavajucu boju izvadite iz pecnice i dodajte ruzmarin i nekoliko komada csenjaka. OPet stavite u pecnicu na 20 min', '120min', 3 );
+
 
 #normativ
 #obrnuti redosljed!!!!!
@@ -201,6 +210,9 @@ insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
 
 insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
             values(6, 6, null, null, '0.5');
+
+insert into normativ(sifra, recept, sastojak, jedinica_mjere, kolicina)
+            values(7, 7, null, null, '0.5');
 
 
 
