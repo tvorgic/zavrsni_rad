@@ -2,8 +2,8 @@
 # Izvođenje naredbi na serveru
 # Otvoriti CMD
 # Zaljepiti sljedeću naredbu bez prvog hash znaka
-# c:\xampp\mysql\bin\mysql -uroot < C:\Users\Tonko\Documents\edunovapp26\SQL\vjezbe\sql_vjezbe\knjiznica.sql
 # c:\xampp\mysql\bin\mysql -uroot < C:\Users\Tonko\Documents\edunovapp26\zavrsni_rad\SQL\kuharica.sql
+# c:\xampp\mysql\bin\mysql -uroot < C:\Users\Tonko\Documents\kuharica\kuharica.hr\SQL\kuharica.sql
 
 drop database if exists kuharica;
 ##Klijent pokrenuti s --default-character-set=utf8 
@@ -13,7 +13,7 @@ use kuharica;
 
 
 create table jedinica_mjere(
-    sifra int not null primary key,
+    sifra int not null primary key AUTO_INCREMENT,
     naziv varchar(50)
 );
 
@@ -34,8 +34,8 @@ create table chef(
 
 create table recept(
     sifra int not null primary key,
-    naziv varchar(50) not null,
-    opis varchar(50) not null,
+    naziv varchar(50)  not null,
+    opis varchar(5000) not null,
     vrijeme_izrade varchar(50),
     chef int
 );
@@ -47,6 +47,13 @@ create table normativ(
     jedinica_mjere int,
     kolicina decimal(4,2)
     
+);
+
+
+create table korisnik(
+sifra int not null primary key auto_increment=1,
+email varchar(50),
+pass varchar(50)
 );
 
 
@@ -91,10 +98,10 @@ alter table normativ add foreign key (jedinica_mjere) references jedinica_mjere(
 #jedinica_mjere
 
 
-insert into jedinica_mjere(sifra, naziv)
-            values(1, 'kg'),
-                  (2, 'l'),
-                  (3, 'kom');
+insert into jedinica_mjere(naziv)
+            values('kg'),
+                  ('l'),
+                  ('kom');
 
 
 
@@ -165,7 +172,7 @@ insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
              4. Dodati tjesteninu u posudu sa slaninom i preliti sa jajima, 5. Lagano promjesati', '20 min', 1 );
 #2.Cannelini
 insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
-            values(2, 'Cannelini all ucelleto', '1. Rukom zgnjecite cesnjak, narežite chili i ubacite u tavu, zatim dodajte maslinovo ulje i passatu
+            values(2, 'Cannelini all ucelleto', '1. Rukom zgnjecite cesnjak, narezite chili i ubacite u tavu, zatim dodajte maslinovo ulje i passatu
             . kuhajte 5 min i po potrebii dodajte sol i papar. dodajte i 5 listica kadulje. 2. Dodajte grah u tavi i lagano mjesajte. 3. Na drugoj tavi
          przite slaninu', '15min', 1);
 #3.Pesto
@@ -188,7 +195,7 @@ insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
 
 #7. Blumenthals Roast Potatoes
 insert into recept(sifra, naziv, opis, vrijeme_izrade, chef)
-            values(7, 'Blumenthals Roast Potatoes', '1. Ogulite krumpir i narezite ga na kriske, dobro isperite da se makne skrob. 2. Stavite kuhati u vodu bez soli dok se krumpir ne pocne raspadati. 3. Oprezno izvadite krimpir na resetku da se ne raspadne i pricekajte dok se ne rashladi i otvrdne. 4. U tacnu dodajte obilnu količinu maslinovog ulja i svinjske masti. Zagrijte tacnu da se otopoi mast i dodajte krumpire. Lagano promjesajte da se krumpiri ne raspadnu te zatim stavite u pecnicu. Ovisno o vrsti krumpira pecite na 50 min ili cak do 90 min. Kada mislite da su krumpiri dobili zadovoljavajucu boju izvadite iz pecnice i dodajte ruzmarin i nekoliko komada csenjaka. OPet stavite u pecnicu na 20 min', '120min', 3 );
+            values(7, 'Blumenthals Roast Potatoes', '1. Ogulite krumpir i narezite ga na kriske, dobro isperite da se makne skrob. 2. Stavite kuhati u vodu bez soli dok se krumpir ne pocne raspadati. 3. Oprezno izvadite krimpir na resetku da se ne raspadne i pricekajte dok se ne rashladi i otvrdne. 4. U tacnu dodajte obilnu kolicinu maslinovog ulja i svinjske masti. Zagrijte tacnu da se otopoi mast i dodajte krumpire. Lagano promjesajte da se krumpiri ne raspadnu te zatim stavite u pecnicu. Ovisno o vrsti krumpira pecite na 50 min ili cak do 90 min. Kada mislite da su krumpiri dobili zadovoljavajucu boju izvadite iz pecnice i dodajte ruzmarin i nekoliko komada csenjaka. OPet stavite u pecnicu na 20 min', '120min', 3 );
 
 
 #normativ
